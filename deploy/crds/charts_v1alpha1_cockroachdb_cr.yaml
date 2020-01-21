@@ -12,7 +12,7 @@ spec:
   
   Name: "cockroachdb"
   Image: "registry.connect.redhat.com/cockroachdb/cockroach"
-  ImageTag: "v19.1.5-1"
+  ImageTag: "v19.2.2-ubi"
   ImagePullPolicy: "Always"
   Replicas: 3
   MaxUnavailable: 1

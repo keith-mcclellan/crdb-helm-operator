@@ -1,7 +1,7 @@
 FROM quay.io/operator-framework/helm-operator:v0.10.0
 LABEL name="Cockroach DB Operator"
 LABEL vendor="Cockroach Labs"
-LABEL version="19.1.5"
+LABEL version="19.2.2"
 LABEL release="1"
 LABEL summary="CockroachDB is a Distributed SQL database."
 LABEL description="CockroachDB is a PostgreSQL wire-compatable Distributed SQL database."

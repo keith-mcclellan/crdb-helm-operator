@@ -2,16 +2,16 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
   annotations:
-    alm-examples: '[{ "apiVersion": "charts.helm.k8s.io/v1alpha1", "kind": "Cockroachdb", "metadata": { "name": "example" }, "spec": { "Name": "cdb", "Image": "cockroachdb/cockroach", "ImageTag": "v19.1.3", "ImagePullPolicy": "Always", "Replicas": 3, "MaxUnavailable": 1, "Component": "cockroachdb", "InternalGrpcPort": 26257, "ExternalGrpcPort": 26257, "InternalGrpcName": "grpc", "ExternalGrpcName": "grpc", "InternalHttpPort": 8080, "ExternalHttpPort": 8080, "HttpName": "http", "Resources": { "requests": { "cpu": "500m", "memory": "512Mi" } }, "InitPodResources": { }, "Storage": "10Gi", "StorageClass": null, "CacheSize": "25%", "MaxSQLMemory": "25%", "ClusterDomain": "cluster.local", "NetworkPolicy": { "Enabled": false, "AllowExternal": true }, "Service": { "type": "ClusterIP", "annotations": { } }, "PodManagementPolicy": "Parallel", "UpdateStrategy": { "type": "RollingUpdate" }, "NodeSelector": { }, "Tolerations": { }, "Secure": { "Enabled": false, "RequestCertsImage": "cockroachdb/cockroach-k8s-request-cert", "RequestCertsImageTag": "0.4", "ServiceAccount": { "Create": true } } } }]'
-    capabilities: Basic Install
-    categories: Database
-    containerImage: quay.io/helmoperators/cockroachdb:19.1.5
-    createdAt: 2019-01-24T15-33-43Z
-    description: CockroachDB Operator based on the CockroachDB helm chart
-    repository: https://github.com/dmesser/cockroachdb-operator
-    support: a-robinson
-    certified: "false"
-  name: cockroachdb.v19.1.5
+   alm-examples: '[{ "apiVersion": "charts.helm.k8s.io/v1alpha1", "kind": "Cockroachdb", "metadata": { "name": "example" }, "spec": { "Name": "cdb", "Image": "registry.connect.redhat.com/cockroachdb/cockroach", "ImageTag": "19.2.2-ubi", "ImagePullPolicy": "Always", "Replicas": 3, "MaxUnavailable": 1, "Component": "cockroachdb", "InternalGrpcPort": 26257, "ExternalGrpcPort": 26257, "InternalGrpcName": "grpc", "ExternalGrpcName": "grpc", "InternalHttpPort": 8080, "ExternalHttpPort": 8080, "HttpName": "http", "Resources": { "requests": { "cpu": "500m", "memory": "512Mi" } }, "InitPodResources": { }, "Storage": "10Gi", "StorageClass": null, "CacheSize": "25%", "MaxSQLMemory": "25%", "ClusterDomain": "cluster.local", "NetworkPolicy": { "Enabled": false, "AllowExternal": true }, "Service": { "type": "ClusterIP", "annotations": { } }, "PodManagementPolicy": "Parallel", "UpdateStrategy": { "type": "RollingUpdate" }, "NodeSelector": { }, "Tolerations": { }, "Secure": { "Enabled": false, "RequestCertsImage": "registry.connect.redhat.com/cockroachdb/request-cert", "RequestCertsImageTag": "0.4-2-ubi", "ServiceAccount": { "Create": true } } } }]'
+   capabilities: Basic Install
+   categories: Database
+   containerImage: registry.connect.redhat.com/cockroachdb/cockroachdb-operator:0.1.1
+   createdAt: 2019-01-24T15-33-43Z
+   description: CockroachDB Operator based on the CockroachDB helm chart
+   repository: https://github.com/keith-mcclellan/crdb-helm-operator
+   support: a-robinson
+   certified: "false"
+  name: cockroachdb.v19.2.2
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -23,20 +23,20 @@ spec:
       name: cockroachdbs.charts.helm.k8s.io
       version: v1alpha1
       resources:
-          - version: v1
-            kind: Deployment
-          - version: v1
-            kind: Service
-          - version: v1
-            kind: ReplicaSet
-          - version: v1
-            kind: Pod
-          - version: v1
-            kind: Secret
-          - version: v1
-            kind: ConfigMap
-          - version: apps/v1
-            kind: StatefulSet
+      - version: v1
+        kind: Deployment
+      - version: v1
+        kind: Service
+      - version: v1
+        kind: ReplicaSet
+      - version: v1
+        kind: Pod
+      - version: v1
+        kind: Secret
+      - version: v1
+        kind: ConfigMap
+      - version: apps/v1
+        kind: StatefulSet
   description: |
     CockroachDB is a scalable, survivable, strongly-consistent SQL database.
 
@@ -102,7 +102,7 @@ spec:
                       fieldPath: metadata.name
                 - name: OPERATOR_NAME
                   value: cockroachdb
-                image: quay.io/helmoperators/cockroachdb:v19.1.5
+                image: registry.connect.redhat.com/cockroachdb/cockroachdb-operator:0.1-6
                 imagePullPolicy: Always
                 name: cockroachdb
                 resources: {}
@@ -193,9 +193,8 @@ spec:
   minKubeVersion: 1.8.0
   provider:
     name: Helm Community
-  replaces: cockroachdb.v19.1.5
   selector:
     matchLabels:
       alm-owner-etcd: cockroachdboperator
       operated-by: cockroachdboperator
-  version: 19.1.5
+  version: 19.2.2
