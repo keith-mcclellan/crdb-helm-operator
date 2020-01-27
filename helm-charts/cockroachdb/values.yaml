@@ -324,7 +324,7 @@ tls:
     image:
             #      repository: cockroachdb/cockroach-k8s-request-cert
             #      tag: "0.4"
-      image: cockroachdb/cockroach-k8s-request-cert:0.4-2-ubi
+      image: cockroachdb/request-cert:0.4-2-ubi
       pullPolicy: IfNotPresent
       credentials: {}
         # registry: docker.io
