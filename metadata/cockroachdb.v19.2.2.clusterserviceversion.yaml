@@ -2,15 +2,15 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
   annotations:
-   alm-examples: '[{ "apiVersion": "charts.helm.k8s.io/v1alpha1", "kind": "Cockroachdb", "metadata": { "name": "example" }, "spec": { "Name": "cdb", "Image": "registry.connect.redhat.com/cockroachdb/cockroach", "ImageTag": "19.2.2-ubi", "ImagePullPolicy": "Always", "Replicas": 3, "MaxUnavailable": 1, "Component": "cockroachdb", "InternalGrpcPort": 26257, "ExternalGrpcPort": 26257, "InternalGrpcName": "grpc", "ExternalGrpcName": "grpc", "InternalHttpPort": 8080, "ExternalHttpPort": 8080, "HttpName": "http", "Resources": { "requests": { "cpu": "500m", "memory": "512Mi" } }, "InitPodResources": { }, "Storage": "10Gi", "StorageClass": null, "CacheSize": "25%", "MaxSQLMemory": "25%", "ClusterDomain": "cluster.local", "NetworkPolicy": { "Enabled": false, "AllowExternal": true }, "Service": { "type": "ClusterIP", "annotations": { } }, "PodManagementPolicy": "Parallel", "UpdateStrategy": { "type": "RollingUpdate" }, "NodeSelector": { }, "Tolerations": { }, "Secure": { "Enabled": false, "RequestCertsImage": "registry.connect.redhat.com/cockroachdb/request-cert", "RequestCertsImageTag": "0.4-2-ubi", "ServiceAccount": { "Create": true } } } }]'
-   capabilities: Basic Install
-   categories: Database
-   containerImage: registry.connect.redhat.com/cockroachdb/cockroachdb-operator:0.1.1
-   createdAt: 2019-01-24T15-33-43Z
-   description: CockroachDB Operator based on the CockroachDB helm chart
-   repository: https://github.com/keith-mcclellan/crdb-helm-operator
-   support: a-robinson
-   certified: "false"
+          alm-examples: '[{ "apiVersion": "charts.helm.k8s.io/v1alpha1", "kind": "Cockroachdb", "metadata": { "name": "example" }, "spec": { "Name": "cdb", "Image": "registry.connect.redhat.com/cockroachdb/cockroach", "ImageTag": "19.2.2-ubi", "ImagePullPolicy": "Always", "Replicas": 3, "MaxUnavailable": 1, "Component": "cockroachdb", "InternalGrpcPort": 26257, "ExternalGrpcPort": 26257, "InternalGrpcName": "grpc", "ExternalGrpcName": "grpc", "InternalHttpPort": 8080, "ExternalHttpPort": 8080, "HttpName": "http", "Resources": { "requests": { "cpu": "500m", "memory": "512Mi" } }, "InitPodResources": { }, "Storage": "10Gi", "StorageClass": null, "CacheSize": "25%", "MaxSQLMemory": "25%", "ClusterDomain": "cluster.local", "NetworkPolicy": { "Enabled": false, "AllowExternal": true }, "Service": { "type": "ClusterIP", "annotations": { } }, "PodManagementPolicy": "Parallel", "UpdateStrategy": { "type": "RollingUpdate" }, "NodeSelector": { }, "Tolerations": { }, "Secure": { "Enabled": false, "RequestCertsImage": "registry.connect.redhat.com/cockroachdb/request-cert", "RequestCertsImageTag": "0.4-2-ubi", "ServiceAccount": { "Create": true } } } }]'
+    capabilities: Basic Install
+    categories: Database
+    containerImage: registry.connect.redhat.com/cockroachdb/cockroachdb-operator:0.1.1
+    createdAt: 2019-01-24T15-33-43Z
+    description: CockroachDB Operator based on the CockroachDB helm chart
+    repository: https://github.com/keith-mcclellan/crdb-helm-operator
+    support: a-robinson
+    certified: "false"
   name: cockroachdb.v19.2.2
   namespace: placeholder
 spec:
@@ -92,6 +92,10 @@ spec:
             spec:
               containers:
               - env:
+                - name: RELATED_IMAGE_INIT
+                  value: "cockroachdb/cockroach-k8s-request-cert:0.4"
+                - name: RELATED_IMAGE_CORE
+                  value: "cockroachdb/cockroach:v19.2.2"
                 - name: WATCH_NAMESPACE
                   valueFrom:
                     fieldRef:

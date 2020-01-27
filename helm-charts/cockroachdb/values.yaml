@@ -1,6 +1,7 @@
 image:
-  repository: cockroachdb/cockroach
-  tag: v19.2.2
+        #  repository: cockroachdb/cockroach
+        #  tag: v19.2.2
+  image: cockroachdb/cockroach:v19.2.2
   pullPolicy: IfNotPresent
   credentials: {}
     # registry: docker.io
@@ -321,8 +322,9 @@ tls:
   init:
     # Image to use for requesting TLS certificates.
     image:
-      repository: cockroachdb/cockroach-k8s-request-cert
-      tag: "0.4"
+            #      repository: cockroachdb/cockroach-k8s-request-cert
+            #      tag: "0.4"
+      image: cockroachdb/cockroach-k8s-request-cert:0.4
       pullPolicy: IfNotPresent
       credentials: {}
         # registry: docker.io

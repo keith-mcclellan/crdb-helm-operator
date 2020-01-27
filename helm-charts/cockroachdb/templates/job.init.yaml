@@ -52,7 +52,7 @@ spec:
         # In addition to the Node certificate and key, the init-certs entrypoint
         # will symlink the cluster CA to the certs directory.
         - name: init-certs
-          image: "{{ .Values.tls.init.image.repository }}:{{ .Values.tls.init.image.tag }}"
+          image: "{{ .Values.tls.init.image.image }}"
           imagePullPolicy: {{ .Values.tls.init.image.pullPolicy | quote }}
           command:
             - /bin/ash
@@ -84,7 +84,7 @@ spec:
     {{- end }}
       containers:
         - name: cluster-init
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.image }}"
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           # Run the command in an `while true` loop because this Job is bound
           # to come up before the CockroachDB Pods (due to the time needed to

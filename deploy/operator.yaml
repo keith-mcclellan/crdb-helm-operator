@@ -19,6 +19,10 @@ spec:
           image: REPLACE_IMAGE
           imagePullPolicy: Always
           env:
+            - name: RELATED_IMAGE_INIT
+              value: "cockroachdb/cockroach-k8s-request-cert:0.4" 
+            - name: RELATED_IMAGE_CORE
+              value: "cockroachdb/cockroach:v19.2.2"
             - name: WATCH_NAMESPACE
               value: ""
             - name: POD_NAME
