@@ -1,4 +1,4 @@
-FROM quay.io/operator-framework/helm-operator:v0.10.0
+FROM quay.io/operator-framework/helm-operator:latest
 LABEL name="Cockroach DB Operator"
 LABEL vendor="Cockroach Labs"
 LABEL version="19.2.2"

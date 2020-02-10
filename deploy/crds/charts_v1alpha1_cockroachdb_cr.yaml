@@ -33,10 +33,10 @@ spec:
   # Uncomment the following resources definitions or pass them from command line
   # to control the cpu and memory resources allocated by the Kubernetes cluster
   Resources: {}
-    # requests:
-    #   cpu: "100m"
-    #   memory: "512Mi"
-  Storage: "100Gi"
+     requests:
+       cpu: "100m"
+       memory: "1024Mi"
+  Storage: "10Gi"
   ## Persistent Volume Storage Class for database data
   ## If defined, storageClassName: <StorageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -45,8 +45,8 @@ spec:
   ##   GKE, AWS & OpenStack)
   ##
   StorageClass: null
-  CacheSize: "25%"
-  MaxSQLMemory: "25%"
+  CacheSize: "256Mi"
+  MaxSQLMemory: "256Mi"
   ClusterDomain: "cluster.local"
   NetworkPolicy:
     Enabled: false

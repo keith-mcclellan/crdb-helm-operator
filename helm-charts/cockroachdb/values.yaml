@@ -32,7 +32,7 @@ conf:
   # Total size in bytes for caches, shared evenly if there are multiple
   # storage devices. Size suffixes are supported (e.g. `1GB` and `1GiB`).
   # A percentage of physical memory can also be specified (e.g. `.25`).
-  cache: 25%
+  cache: "256Mi"
 
   # Sets a name to verify the identity of a cluster.
   # The value must match between all nodes specified via `conf.join`.
@@ -95,7 +95,7 @@ conf:
   # including prepared queries and intermediate data rows during query
   # execution. Accepts numbers interpreted as bytes, size suffixes
   # (e.g. `1GB` and `1GiB`) or a percentage of physical memory (e.g. `.25`).
-  max-sql-memory: 25%
+  max-sql-memory: "256Mi"
 
   # An ordered, comma-separated list of key-value pairs that describe the
   # topography of the machine. Topography might include country, datacenter
@@ -196,12 +196,11 @@ statefulset:
   # command line to control the CPU and memory resources allocated
   # by Pods of this StatefulSet.
   resources: {}
-    # limits:
-    #   cpu: 100m
-    #   memory: 512Mi
-    # requests:
-    #   cpu: 100m
-    #   memory: 512Mi
+  #  resources: 
+  # limits:
+  #   memory: "1Gi"
+  # requests:
+  #   memory: "1Gi"
 
 
 service:
@@ -258,7 +257,7 @@ storage:
   persistentVolume:
     enabled: yes
 
-    size: 100Gi
+    size: 10Gi
 
     # If defined, then `storageClassName: <storageClass>`.
     # If set to "-", then `storageClassName: ""`, which disables dynamic
