@@ -1,5 +1,6 @@
+---
 channels:
-- currentCSV: cockroachdb.v19.2.2
+- currentCSV: cockroachdb.v19.2.4
   name: stable
 defaultChannel: stable
 packageName: cockroachdb-certified

@@ -20,9 +20,9 @@ spec:
           imagePullPolicy: Always
           env:
             - name: RELATED_IMAGE_INIT
-              value: "registry.connect.redhat.com/cockroachdb/request-cert:0.4-2-ubi" 
+              value: "registry.connect.redhat.com/cockroachdb/request-cert:latest" 
             - name: RELATED_IMAGE_CORE
-              value: "registry.connect.redhat.com/cockroachdb/cockroach:v19.2.2-ubi"
+              value: "registry.connect.redhat.com/cockroachdb/cockroach:v19.2.4-ubi"
             - name: WATCH_NAMESPACE
               value: ""
             - name: POD_NAME

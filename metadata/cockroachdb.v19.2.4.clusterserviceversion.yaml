@@ -1,17 +1,18 @@
+---
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
   annotations:
-    alm-examples: '[{ "apiVersion": "charts.helm.k8s.io/v1alpha1", "kind": "Cockroachdb", "metadata": { "name": "example" }, "spec": { "Name": "cdb", "Image": "registry.connect.redhat.com/cockroachdb/cockroach", "ImageTag": "19.2.2-ubi", "ImagePullPolicy": "Always", "Replicas": 3, "MaxUnavailable": 1, "Component": "cockroachdb", "InternalGrpcPort": 26257, "ExternalGrpcPort": 26257, "InternalGrpcName": "grpc", "ExternalGrpcName": "grpc", "InternalHttpPort": 8080, "ExternalHttpPort": 8080, "HttpName": "http", "Resources": { "requests": { "cpu": "100m", "memory": "1024Mi" } }, "InitPodResources": { }, "Storage": "10Gi", "StorageClass": null, "CacheSize": "256Mi", "MaxSQLMemory": "256Mi", "ClusterDomain": "cluster.local", "NetworkPolicy": { "Enabled": false, "AllowExternal": true }, "Service": { "type": "ClusterIP", "annotations": { } }, "PodManagementPolicy": "Parallel", "UpdateStrategy": { "type": "RollingUpdate" }, "NodeSelector": { }, "Tolerations": { }, "Secure": { "Enabled": false, "RequestCertsImage": "registry.connect.redhat.com/cockroachdb/request-cert", "RequestCertsImageTag": "0.4-2-ubi", "ServiceAccount": { "Create": true } } } }]'
+    alm-examples: '[{ "apiVersion": "charts.helm.k8s.io/v1alpha1", "kind": "Cockroachdb", "metadata": { "name": "example" }, "spec": { "Name": "cdb", "Image": "registry.connect.redhat.com/cockroachdb/cockroach:19.2.4-ubi", "ImagePullPolicy": "Always", "Replicas": 3, "MaxUnavailable": 1, "Component": "cockroachdb", "InternalGrpcPort": 26257, "ExternalGrpcPort": 26257, "InternalGrpcName": "grpc", "ExternalGrpcName": "grpc", "InternalHttpPort": 8080, "ExternalHttpPort": 8080, "HttpName": "http", "Resources": { "requests": { "cpu": "100m", "memory": "1024Mi" } }, "InitPodResources": { }, "Storage": "10Gi", "StorageClass": null, "CacheSize": "256Mi", "MaxSQLMemory": "256Mi", "ClusterDomain": "cluster.local", "NetworkPolicy": { "Enabled": false, "AllowExternal": true }, "Service": { "type": "ClusterIP", "annotations": { } }, "PodManagementPolicy": "Parallel", "UpdateStrategy": { "type": "RollingUpdate" }, "NodeSelector": { }, "Tolerations": { }, "Secure": { "Enabled": false, "RequestCertsImage": "registry.connect.redhat.com/cockroachdb/request-cert:latest", "ServiceAccount": { "Create": true } } } }]'
     capabilities: Basic Install
     categories: Database
-    containerImage: registry.connect.redhat.com/cockroachdb/cockroachdb-operator:v19.2.2-0.1.28
+    containerImage: registry.connect.redhat.com/cockroachdb/cockroachdb-operator:v19.2.4-0.2
     createdAt: 2019-01-24T15-33-43Z
     description: CockroachDB Operator based on the CockroachDB helm chart
     repository: https://github.com/keith-mcclellan/crdb-helm-operator
     support: a-robinson
     certified: "false"
-  name: cockroachdb.v19.2.2
+  name: cockroachdb.v19.2.4
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -93,9 +94,9 @@ spec:
               containers:
               - env:
                 - name: RELATED_IMAGE_INIT
-                  value: "registry.connect.redhat.com/cockroachdb/request-cert:0.4-2-ubi"
+                  value: "registry.connect.redhat.com/cockroachdb/request-cert:latest"
                 - name: RELATED_IMAGE_CORE
-                  value: "registry.connect.redhat.com/cockroachdb/cockroach:v19.2.2-ubi"
+                  value: "registry.connect.redhat.com/cockroachdb/cockroach:v19.2.4-ubi"
                 - name: WATCH_NAMESPACE
                   valueFrom:
                     fieldRef:
@@ -106,7 +107,7 @@ spec:
                       fieldPath: metadata.name
                 - name: OPERATOR_NAME
                   value: cockroachdb
-                image: registry.connect.redhat.com/cockroachdb/cockroachdb-operator:v19.2.2-0.1.28
+                image: registry.connect.redhat.com/cockroachdb/cockroachdb-operator:v19.2.4-0.2
                 imagePullPolicy: Always
                 name: cockroachdb
                 resources: {}
@@ -201,4 +202,4 @@ spec:
     matchLabels:
       alm-owner-etcd: cockroachdboperator
       operated-by: cockroachdboperator
-  version: 19.2.2
+  version: 19.2.4
