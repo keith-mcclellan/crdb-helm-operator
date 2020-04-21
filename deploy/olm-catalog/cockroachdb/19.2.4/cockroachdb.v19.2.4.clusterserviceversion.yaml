@@ -6,7 +6,7 @@ metadata:
     alm-examples: '[{ "apiVersion": "charts.helm.k8s.io/v1alpha1", "kind": "Cockroachdb", "metadata": { "name": "example" }, "spec": { "Name": "cdb", "Replicas": 3, "MaxUnavailable": 1, "Component": "cockroachdb", "InternalGrpcPort": 26257, "ExternalGrpcPort": 26257, "InternalGrpcName": "grpc", "ExternalGrpcName": "grpc", "InternalHttpPort": 8080, "ExternalHttpPort": 8080, "HttpName": "http", "Resources": { "requests": { "cpu": "100m", "memory": "1024Mi" } }, "InitPodResources": { }, "Storage": "10Gi", "StorageClass": null, "CacheSize": "256Mi", "MaxSQLMemory": "256Mi", "ClusterDomain": "cluster.local", "NetworkPolicy": { "Enabled": false, "AllowExternal": true }, "Service": { "type": "ClusterIP", "annotations": { } }, "PodManagementPolicy": "Parallel", "UpdateStrategy": { "type": "RollingUpdate" }, "NodeSelector": { }, "Tolerations": { }, "Secure": { "Enabled": false, "ServiceAccount": { "Create": true } } } }]'
     capabilities: Basic Install
     categories: Database
-    containerImage: $RELATED_IMAGE_CORE 
+    containerImage: registry.connect.redhat.com/cockroachdb/cockroachdb-operator:v19.2.4-0.2.1 
     createdAt: 2019-01-24T15-33-43Z
     description: CockroachDB Operator based on the CockroachDB helm chart
     repository: https://github.com/keith-mcclellan/crdb-helm-operator
@@ -107,7 +107,7 @@ spec:
                       fieldPath: metadata.name
                 - name: OPERATOR_NAME
                   value: cockroachdb
-                  image: registry.connect.redhat.com/cockroachdb/cockroachdb-operator:v19.2.4-0.2.1
+                image: registry.connect.redhat.com/cockroachdb/cockroachdb-operator:v19.2.4-0.2.1
                 imagePullPolicy: Always
                 name: cockroachdb
                 resources: {}
