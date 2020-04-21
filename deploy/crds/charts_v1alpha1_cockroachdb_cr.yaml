@@ -11,7 +11,7 @@ spec:
   # name: value
   
   Name: "cockroachdb"
-  Image: "registry.connect.redhat.com/cockroachdb/cockroach:v19.2.4-ubi"
+  Image: $RELATED_IMAGE_CORE
   ImagePullPolicy: "Always"
   Replicas: 3
   MaxUnavailable: 1
@@ -60,7 +60,7 @@ spec:
   Tolerations: {}
   Secure:
     Enabled: false
-    RequestCertsImage: "registry.connect.redhat.com/cockroachdb/request-cert:latest"
+    RequestCertsImage: $RELATED_IMAGE_INIT
     ServiceAccount:
       # Specifies whether a service account should be created.
       Create: true

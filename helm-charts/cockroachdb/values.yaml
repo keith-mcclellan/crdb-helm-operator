@@ -1,7 +1,7 @@
 image:
         #  repository: cockroachdb/cockroach
         #  tag: v19.2.2
-  image: registry.connect.redhat.com/cockroachdb/cockroach:v19.2.4-ubi
+  image: $RELATED_IMAGE_CORE
   pullPolicy: IfNotPresent
   credentials: {}
     # registry: docker.io
@@ -323,7 +323,7 @@ tls:
     image:
             #      repository: cockroachdb/cockroach-k8s-request-cert
             #      tag: "0.4"
-      image: registry.connect.redhat.com/cockroachdb/request-cert:latest
+      image: $RELATED_IMAGE_INIT
       pullPolicy: IfNotPresent
       credentials: {}
         # registry: docker.io
